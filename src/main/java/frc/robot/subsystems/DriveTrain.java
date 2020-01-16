@@ -18,6 +18,8 @@ public class DriveTrain extends SubsystemBase {
  *  showing, but once i commited and pushed, the errors went back.
  *  This might have something to do with me fetching the library from
  *  online, but I really don't understand why this is happening.
+ * 
+ * EDIT: They are working now again and I am confused.
  */
   
  public DriveTrain() {
