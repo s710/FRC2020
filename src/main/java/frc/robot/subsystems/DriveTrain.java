@@ -13,8 +13,14 @@ public class DriveTrain extends SubsystemBase {
   private static TalonSRX backRightMotor = new TalonSRX(SRX_Class.SRX_BACK_RIGHT_MOTOR_ID);
   private static TalonSRX backLeftMotor = new TalonSRX(SRX_Class.SRX_BACK_LEFT_MOTOR_ID);
 
-
-  public DriveTrain() {
+  
+/*  When i initially added the phoenix vendor library no errors were 
+ *  showing, but once i commited and pushed, the errors went back.
+ *  This might have something to do with me fetching the library from
+ *  online, but I really don't understand why this is happening.
+ */
+  
+ public DriveTrain() {
     
   }
 
