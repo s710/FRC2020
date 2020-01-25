@@ -8,7 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -22,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
+  public final Joystick joy = new Joystick(0);
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
 
@@ -42,6 +43,17 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+  
+    JoystickButton a = new JoystickButton(joy, 2);
+    JoystickButton b = new JoystickButton(joy, 3);
+    JoystickButton y = new JoystickButton(joy, 4);
+    JoystickButton lb = new JoystickButton(joy, 5);
+    JoystickButton rb = new JoystickButton(joy, 6);
+    JoystickButton lt = new JoystickButton(joy, 7);
+    JoystickButton rt = new JoystickButton(joy, 8);
+    JoystickButton back = new JoystickButton(joy, 9);
+    JoystickButton start = new JoystickButton(joy, 10);
+    
   }
 
 
