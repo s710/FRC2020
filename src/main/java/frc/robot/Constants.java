@@ -17,18 +17,26 @@ package frc.robot;
  */
 public final class Constants {
     
-	public static class SRX_Class {
+	public static class FX_Class {
 
-		public static final int SRX_FRONT_RIGHT_MOTOR_ID = 0;
-		public static final int SRX_FRONT_LEFT_MOTOR_ID = 1;
-		public static final int SRX_MID_RIGHT_MOTOR_ID = 2;
-		public static final int SRX_MID_LEFT_MOTOR_ID = 3;
-		public static final int SRX_BACK_RIGHT_MOTOR_ID = 4;
-		public static final int SRX_BACK_LEFT_MOTOR_ID = 5;
+		public static final int FX_FRONT_RIGHT_MOTOR_ID = 1;
+		public static final int FX_FRONT_LEFT_MOTOR_ID = 2;
+		public static final int FX_MID_RIGHT_MOTOR_ID = 3;
+		public static final int FX_MID_LEFT_MOTOR_ID = 4;
+		public static final int FX_BACK_RIGHT_MOTOR_ID = 5;
+		public static final int FX_BACK_LEFT_MOTOR_ID = 6;
 		
+		public static final int FX_SHOOTER_LEFT_MOTOR_ID = 7;
+		public static final int FX_SHOOTER_RIGHT_MOTOR_ID = 8;
 	}
+// CAN id's for talon_FXs stored here
+	
+	
 	
 
-// CAN id's for talon_SRXs stored here
+
+
+
+
 
 }

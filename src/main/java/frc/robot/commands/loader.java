@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class shooter extends CommandBase {
+public class loader extends CommandBase {
   /**
-   * Creates a new shooter.
+   * Creates a new loader.
    */
-  public shooter() {
+  public loader() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
