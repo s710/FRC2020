@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.inverseLauncher;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.launcher;
+import frc.robot.commands.reverseLauncher;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -50,7 +52,7 @@ public class RobotContainer {
     Joystick controller = new Joystick(1);
     //logitechController.getRawAxis(leftYAxis);
 
-  
+    JoystickButton x = new JoystickButton(joy, 1);
     JoystickButton a = new JoystickButton(joy, 2);
     JoystickButton b = new JoystickButton(joy, 3);
     JoystickButton y = new JoystickButton(joy, 4);
@@ -62,7 +64,10 @@ public class RobotContainer {
     JoystickButton start = new JoystickButton(joy, 10);
   
     b.whenPressed(new launcher());
+    x.whenPressed(new inverseLauncher());
+  
   }
+
 
 
   /**
