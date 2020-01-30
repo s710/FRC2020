@@ -8,11 +8,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 
 public class inverseLauncher extends CommandBase {
   /**
    * Creates a new inverseLauncher.
    */
+  private boolean finished;
+  
   public inverseLauncher() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -20,11 +23,14 @@ public class inverseLauncher extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    finished = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.m_shooter.inverseToggle();
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +41,6 @@ public class inverseLauncher extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

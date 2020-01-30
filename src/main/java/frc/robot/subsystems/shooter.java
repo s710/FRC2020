@@ -22,19 +22,21 @@ public class shooter extends SubsystemBase {
    * Creates a new launcher.
    */
   private boolean currentState;
+  private boolean inverseState;
   private double launcherMotorSpeed;
 
   private static TalonFX shooterLeftMotor = new TalonFX(FX_Class.FX_SHOOTER_RIGHT_MOTOR_ID);
   private static TalonFX shooterRightMotor = new TalonFX(FX_Class.FX_SHOOTER_LEFT_MOTOR_ID);
 
  public double getLauncherSpeed() {
-      return SmartDashboard.getNumber("Launcher_Motor_Speed", 0.5);
+      return SmartDashboard.getNumber("Launcher_Motor_Speed", 0.25);
  }
   
   public shooter() {
 
     currentState = false;
-    SmartDashboard.putNumber("Launcher_Motor_Speed", 0.5);
+    inverseState = false;
+    SmartDashboard.putNumber("Launcher_Motor_Speed", 0.25);
 
 
 
@@ -53,11 +55,25 @@ public class shooter extends SubsystemBase {
       currentState = true;
       launcherMotorSpeed = getLauncherSpeed();
       shooterLeftMotor.set(TalonFXControlMode.PercentOutput, launcherMotorSpeed);
-      shooterRightMotor.set(TalonFXControlMode.PercentOutput, -launcherMotorSpeed);
-
+      shooterRightMotor.set(TalonFXControlMode.PercentOutput, launcherMotorSpeed);
     }
 
   }
+
+  public void inverseToggle() {
+    if(inverseState) {
+      shooterLeftMotor.setInverted(true);
+      shooterRightMotor.setInverted(false);
+      inverseState = false;
+    }
+  
+    else {
+      shooterLeftMotor.setInverted(false);
+      shooterRightMotor.setInverted(true);
+      inverseState = true;
+    }
+  }
+
 
   @Override
   public void periodic() {

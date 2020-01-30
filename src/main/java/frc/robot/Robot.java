@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.shooter;
 
 /**
@@ -22,6 +23,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static shooter m_shooter;
   private RobotContainer m_robotContainer;
+  private DriveTrain m_driveTrain;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -33,6 +35,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_shooter = new shooter();
+    m_driveTrain = new DriveTrain();
 
   }
 
