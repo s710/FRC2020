@@ -49,7 +49,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    Joystick controller = new Joystick(1);
+    Joystick joy = new Joystick(0);
     //logitechController.getRawAxis(leftYAxis);
 
     JoystickButton x = new JoystickButton(joy, 1);

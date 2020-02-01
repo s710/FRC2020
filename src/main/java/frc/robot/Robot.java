@@ -8,10 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.shooter;
+import frc.robot.RobotContainer;;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -19,6 +21,7 @@ import frc.robot.subsystems.shooter;
  * the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static shooter m_shooter;
@@ -29,6 +32,7 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
+  
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -36,6 +40,7 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     m_shooter = new shooter();
     m_driveTrain = new DriveTrain();
+    
 
   }
 
@@ -53,7 +58,10 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    m_driveTrain.driveTank(m_robotContainer.joy);
+  
   }
+
 
   /**
    * This function is called once each time the robot enters Disabled mode.
