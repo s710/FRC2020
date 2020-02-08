@@ -33,17 +33,19 @@ public class DriveTrain extends SubsystemBase {
   
   private static SpeedControllerGroup rightMotors = new SpeedControllerGroup(frontRightMotor, midRightMotor, backRightMotor);
   private static SpeedControllerGroup leftMotors = new SpeedControllerGroup(frontLeftMotor, midLeftMotor, backLeftMotor);
-  private static DifferentialDrive differentialDriveTrain = new DifferentialDrive(rightMotors, leftMotors);
+  private static DifferentialDrive differentialDriveTrain = new DifferentialDrive(leftMotors, rightMotors);
 
  public DriveTrain() {
  
+
+  //midLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
+  //backLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
   
-  /*midLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
-  backLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
+  //midRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
+  //backRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
   
-  midRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
-  backRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
-  */ 
+  
+  
 
   
 
@@ -52,7 +54,7 @@ public class DriveTrain extends SubsystemBase {
 
 
   public void driveTank(Joystick joy){
-    System.out.println(-joy.getY() + " " + -joy.getThrottle());
+    System.out.println(joy.getY() + " " + joy.getThrottle());
     differentialDriveTrain.tankDrive(-joy.getY(), -joy.getThrottle());
 
   }

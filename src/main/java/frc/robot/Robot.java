@@ -8,12 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
-import frc.robot.RobotContainer;;
+import frc.robot.RobotContainer;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static shooter m_shooter;
   private RobotContainer m_robotContainer;
   private DriveTrain m_driveTrain;
+  public static feeder m_feeder;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -40,6 +42,7 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     m_shooter = new shooter();
     m_driveTrain = new DriveTrain();
+    m_feeder = new feeder();
     
 
   }
@@ -59,6 +62,7 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
     m_driveTrain.driveTank(m_robotContainer.joy);
+
   
   }
 
@@ -79,7 +83,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+  
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {

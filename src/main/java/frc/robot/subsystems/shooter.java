@@ -29,14 +29,14 @@ public class shooter extends SubsystemBase {
   private static TalonFX shooterRightMotor = new TalonFX(FX_Class.FX_SHOOTER_LEFT_MOTOR_ID);
 
  public double getLauncherSpeed() {
-      return SmartDashboard.getNumber("Launcher_Motor_Speed", 0.25);
+    return SmartDashboard.getNumber("Launcher_Motor_Speed", 0.25);
  }
   
   public shooter() {
 
     currentState = false;
     inverseState = false;
-    SmartDashboard.putNumber("Launcher_Motor_Speed", 0.25);
+    SmartDashboard.putNumber("Launcher_Motor_Speed", 1.0);
 
 
 
@@ -53,9 +53,8 @@ public class shooter extends SubsystemBase {
     }
     else{
       currentState = true;
-      launcherMotorSpeed = getLauncherSpeed();
-      shooterLeftMotor.set(TalonFXControlMode.PercentOutput, launcherMotorSpeed);
-      shooterRightMotor.set(TalonFXControlMode.PercentOutput, launcherMotorSpeed);
+      shooterLeftMotor.set(TalonFXControlMode.PercentOutput, getLauncherSpeed());
+      shooterRightMotor.set(TalonFXControlMode.PercentOutput, getLauncherSpeed());
     }
 
   }
