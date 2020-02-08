@@ -45,6 +45,7 @@ public class feeder extends SubsystemBase {
   }
   public void beltToggle(){
     if(beltState){
+      beltState = false;
       feederBeltMotor.set(ControlMode.PercentOutput, getBeltSpeed());
       System.out.println("is correctly getting speed for belt");
 
@@ -58,6 +59,7 @@ public class feeder extends SubsystemBase {
 
   public void motorFeederintoShooterToggle(){
     if(motorFeederintoShooterState){
+      motorFeederintoShooterState = false;
       System.out.println("got to the speed for motorFeederIntoShooterToggle");
       motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, getMotorFeederIntoShooterSpeed());
     }

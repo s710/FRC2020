@@ -18,11 +18,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class DriveTrain extends SubsystemBase {
 
-  
+  private boolean autoMode1ToggleState;
+
   private static WPI_TalonFX frontRightMotor = new WPI_TalonFX(FX_Class.FX_FRONT_RIGHT_MOTOR_ID);
   private static WPI_TalonFX midRightMotor = new WPI_TalonFX(FX_Class.FX_MID_RIGHT_MOTOR_ID);
   private static WPI_TalonFX backRightMotor = new WPI_TalonFX(FX_Class.FX_BACK_RIGHT_MOTOR_ID);
@@ -45,11 +47,19 @@ public class DriveTrain extends SubsystemBase {
   //backRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
   
   
-  
+  autoMode1ToggleState = true;
 
-  
 
 }
+
+
+public void autoMode1MotorSet(double speedMode1){
+
+  rightMotors.set(speedMode1);
+  leftMotors.set(-speedMode1);
+
+}
+
 
 
 
