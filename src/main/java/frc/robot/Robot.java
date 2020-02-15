@@ -7,14 +7,19 @@
 
 package frc.robot;
 
+import java.util.NavigableMap;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
+import frc.utilities.Navigation;
 import frc.robot.RobotContainer;
+import frc.robot.commands.CommandGroupAutonomousTest;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -27,7 +32,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static shooter m_shooter;
   private RobotContainer m_robotContainer;
-  private DriveTrain m_driveTrain;
+  public static DriveTrain m_driveTrain;
+  public static Navigation m_navigation;
   public static feeder m_feeder;
 
   /**
@@ -43,8 +49,12 @@ public class Robot extends TimedRobot {
     m_shooter = new shooter();
     m_driveTrain = new DriveTrain();
     m_feeder = new feeder();
-    
+    m_navigation = new Navigation();
 
+    SmartDashboard.putNumber("AutoMode1SecondsTime", 1);
+    SmartDashboard.putNumber("AutoMode1Speed", 0.8);
+    SmartDashboard.putNumber("TurnToAngleSpeed", 0.8);
+    
   }
 
   /**
@@ -96,7 +106,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+
+    new CommandGroupAutonomousTest();
+
   }
+  
 
   @Override
   public void teleopInit() {

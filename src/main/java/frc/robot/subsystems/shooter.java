@@ -23,7 +23,6 @@ public class shooter extends SubsystemBase {
    */
   private boolean currentState;
   private boolean inverseState;
-  private double launcherMotorSpeed;
 
   private static TalonFX shooterLeftMotor = new TalonFX(FX_Class.FX_SHOOTER_RIGHT_MOTOR_ID);
   private static TalonFX shooterRightMotor = new TalonFX(FX_Class.FX_SHOOTER_LEFT_MOTOR_ID);
@@ -36,6 +35,10 @@ public class shooter extends SubsystemBase {
 
     currentState = false;
     inverseState = false;
+
+    shooterLeftMotor.setInverted(true);
+      shooterRightMotor.setInverted(false);
+
     SmartDashboard.putNumber("Launcher_Motor_Speed", 1.0);
 
 

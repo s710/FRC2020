@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 
 public class GyroTurnAutoTest extends CommandBase {
-  /**
+  /*
    * Creates a new GyroTurnAutoTest.
    */
 
@@ -34,27 +34,38 @@ public class GyroTurnAutoTest extends CommandBase {
   @Override
   public void initialize() {
 
-    gyroAngleInitial = Robot.m_navigation.getAngle();
+    try{
+      gyroAngleInitial = Robot.m_navigation.getAngle();
+    }
+
+    catch(Exception exception){
+      System.out.println("gyro initialization error" + exception);
+    }
 
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    try{
+      turnAngleSpeed = SmartDashboard.getNumber("TurnToAngleSpeed", 0.8);
 
-    turnAngleSpeed = SmartDashboard.getNumber("TurnToAngleSpeed", 0.8);
-
-    gyroCurrentAngle = Robot.m_navigation.getAngle();
+      gyroCurrentAngle = Robot.m_navigation.getAngle();
     
-    if((gyroCurrentAngle - gyroAngleInitial) >= angleToTurn){
-      Robot.m_driveTrain.turnToAngle(0);
-    }
-    else{
-      Robot.m_driveTrain.turnToAngle(turnAngleSpeed);
-    }
+      if((gyroCurrentAngle - gyroAngleInitial) >= angleToTurn){
+        Robot.m_driveTrain.turnToAngle(0);
+      }
 
+      else{
+        Robot.m_driveTrain.turnToAngle(turnAngleSpeed); }
+    
+      }
+    catch (Exception exception){
+      System.out.println("gyro turn mechanism error" + exception);
+       
+    }
+  
   }
-
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

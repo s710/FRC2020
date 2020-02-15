@@ -13,7 +13,7 @@ import static frc.robot.Constants.FX_Class;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-
+import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
@@ -50,6 +50,7 @@ public class DriveTrain extends SubsystemBase {
   autoMode1ToggleState = true;
 
 
+
 }
 
 
@@ -60,18 +61,40 @@ public void autoMode1MotorSet(double speedMode1){
 
 }
 
+public void turnToAngle(double turningSpeed){
+
+  rightMotors.set(turningSpeed);
+  leftMotors.set(turningSpeed);
+
+}
+
+public void motorTelemetryLog(){
+  System.out.println("___________________DRIVE TRAIN___________________");
+  System.out.println("SensorVelocityRightMotors:  " + frontRightMotor.getSelectedSensorVelocity(0));
+  System.out.println("SensorVelocityRightMotors:  " + frontLeftMotor.getSelectedSensorVelocity(0));
+  System.out.println("SensorVelocityRightMotors:  " + frontRightMotor.getSelectedSensorPosition(0));
+  System.out.println("SensorVelocityRightMotors:  " + frontRightMotor.getSelectedSensorPosition(0));
+  System.out.println("_________________________________________________");
+
+
+
+}
+
 
 
 
   public void driveTank(Joystick joy){
     System.out.println(joy.getY() + " " + joy.getThrottle());
     differentialDriveTrain.tankDrive(-joy.getY(), -joy.getThrottle());
+    
 
   }
+
+
   
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     //get controlle
   }
-} 
+}
