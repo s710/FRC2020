@@ -61,6 +61,7 @@ public class RobotContainer {
     JoystickButton rt = new JoystickButton(joy, 8);
     JoystickButton back = new JoystickButton(joy, 9);
     JoystickButton start = new JoystickButton(joy, 10);
+    //JoystickButton r_dpad = new JoystickButton(joy, 11); 
   
     b.whenPressed(new launcher());
     x.whenPressed(new inverseLauncher());

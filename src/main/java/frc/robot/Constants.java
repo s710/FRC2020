@@ -21,8 +21,8 @@ public final class Constants {
 
 		public static final int FX_FRONT_RIGHT_MOTOR_ID = 1;
 		public static final int FX_FRONT_LEFT_MOTOR_ID = 2;
-		public static final int FX_MID_RIGHT_MOTOR_ID = 3;
-		public static final int FX_MID_LEFT_MOTOR_ID = 4;
+		//public static final int FX_MID_RIGHT_MOTOR_ID = 3;
+		//public static final int FX_MID_LEFT_MOTOR_ID = 4;
 		public static final int FX_BACK_RIGHT_MOTOR_ID = 5;
 		public static final int FX_BACK_LEFT_MOTOR_ID = 6;
 		

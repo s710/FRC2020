@@ -9,6 +9,7 @@ package frc.robot;
 
 import java.util.NavigableMap;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -20,6 +21,8 @@ import frc.robot.subsystems.shooter;
 import frc.utilities.Navigation;
 import frc.robot.RobotContainer;
 import frc.robot.commands.CommandGroupAutonomousTest;
+import edu.wpi.first.networktables.NetworkTable;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -35,6 +38,9 @@ public class Robot extends TimedRobot {
   public static DriveTrain m_driveTrain;
   public static Navigation m_navigation;
   public static feeder m_feeder;
+
+  private NetworkTableInstance inst;
+  private NetworkTable table;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -54,7 +60,15 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("AutoMode1SecondsTime", 1);
     SmartDashboard.putNumber("AutoMode1Speed", 0.8);
     SmartDashboard.putNumber("TurnToAngleSpeed", 0.8);
+
+    inst.getDefault();
+    inst.getTable("limelight");
+    inst.getEntry("<variablename>");
+   //inst.setNumber(0);
     
+    
+    
+
   }
 
   /**
