@@ -8,11 +8,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
+import frc.robot.subsystems.ClrWeel;
 
 public class ClrWeelSpinner extends CommandBase {
   /**
    * Creates a new ClrWeelSpinner.
    */
+  private boolean finished;
+
   public ClrWeelSpinner() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -20,11 +24,13 @@ public class ClrWeelSpinner extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    finished = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.m_ClrWeel.triggerWhenHeldSpin();
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +41,6 @@ public class ClrWeelSpinner extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

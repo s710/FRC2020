@@ -33,6 +33,7 @@ public final class Constants {
 
 		public static final int VICTOR_BELT_MOTOR_ID = 1;
 		public static final int VICTOR_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID = 2;
+		public static final int VICTOR_CLR_WHEEL_MOTOR_ID = 3;
 		
 	}
 // CAN id's for talon_FXs stored here

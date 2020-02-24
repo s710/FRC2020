@@ -8,14 +8,38 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.VICTOR_CLASS;
+import edu.wpi.first.wpilibj.Joystick;
 
-public class ColoWeel extends SubsystemBase {
+import java.security.cert.CRL;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class ClrWeel extends SubsystemBase {
+
+private static VictorSPX clrWheelMotor = new VictorSPX(VICTOR_CLASS.VICTOR_CLR_WHEEL_MOTOR_ID);
+private boolean currentState;
+private double wheelMotorSpeed; 
+
+
   /**
    * Creates a new ColoWeel.
    */
-  public ColoWeel() {
+  public ClrWeel() {
+     wheelMotorSpeed = SmartDashboard.getNumber("Color Wheel Motor Speed", 0.3);
+     
+  }
+
+  public void triggerWhenHeldSpin() {
+
+    clrWheelMotor.set(ControlMode.PercentOutput, wheelMotorSpeed);
 
   }
+
+
+  
 
   @Override
   public void periodic() {

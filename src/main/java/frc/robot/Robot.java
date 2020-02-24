@@ -10,18 +10,24 @@ package frc.robot;
 import java.util.NavigableMap;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
 import frc.utilities.Navigation;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.ClrWeel;
 import frc.robot.commands.CommandGroupAutonomousTest;
+import frc.robot.commands.DriveWhileAutoMode1;
 import edu.wpi.first.networktables.NetworkTable;
+
 
 
 /**
@@ -36,8 +42,12 @@ public class Robot extends TimedRobot {
   public static shooter m_shooter;
   private RobotContainer m_robotContainer;
   public static DriveTrain m_driveTrain;
+  public static CommandGroupAutonomousTest m_commandGroupAutonomousTest;
   public static Navigation m_navigation;
   public static feeder m_feeder;
+  public static ClrWeel m_ClrWeel;
+  public static DriveWhileAutoMode1 m_driveWhileAutoMode1;
+
 
   private NetworkTableInstance inst;
   private NetworkTable table;
@@ -47,6 +57,11 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   
+  Command m_CommandGroupAu;
+  SendableChooser<Command> chooser;
+
+
+
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -56,16 +71,44 @@ public class Robot extends TimedRobot {
     m_driveTrain = new DriveTrain();
     m_feeder = new feeder();
     m_navigation = new Navigation();
+    m_ClrWeel = new ClrWeel();
+    m_commandGroupAutonomousTest = new CommandGroupAutonomousTest();
+    m_driveWhileAutoMode1 = new DriveWhileAutoMode1();
+
+ 
 
     SmartDashboard.putNumber("AutoMode1SecondsTime", 1);
     SmartDashboard.putNumber("AutoMode1Speed", 0.8);
     SmartDashboard.putNumber("TurnToAngleSpeed", 0.8);
+    SmartDashboard.putNumber("ColorWheelMotorSpeed", 0.2);
+    SmartDashboard.putBoolean("GreenTrue", false);
+    SmartDashboard.putBoolean("YellowTrue", false);
+    SmartDashboard.putBoolean("BlueTrue", false);
+    SmartDashboard.putBoolean("RedTrue", false);  
 
-    inst.getDefault();
-    inst.getTable("limelight");
-    inst.getEntry("<variablename>");
+
+    chooser = new SendableChooser<Command>();
+
+    chooser.setDefaultOption("SquareMode", m_commandGroupAutonomousTest);
+    chooser.addOption("DriveOffTheLine", m_driveWhileAutoMode1);
+    // chooser.setDefaultOption("SquareMode",m_commandGroupAutonomousTest);
+    // chooser.addOption("DriveOffTheLine", m_driveWhileAutoMode1);
+    // //chooser.addOption("TesterMode", m_testChooserAuto);
+
+    SmartDashboard.putData("AutoModeSelect", chooser);
+
+    // try{
+    //   inst.getDefault();
+    //   inst.getTable("limelight");
+    //   //inst.getEntry("<variablename>");
+    // }
+    // catch(Exception exception){
+    //   System.out.println(exception);
+    // }
+
+
    //inst.setNumber(0);
-    
+  
     
     
 
@@ -84,6 +127,11 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+    
+    SmartDashboard.putNumber("Gyro Angle" , m_navigation.getAngle());
+
+    //SmartDashboard.putNumber("Gyro Angle" , m_navigation.getAngle());
+    
     CommandScheduler.getInstance().run();
     m_driveTrain.driveTank(m_robotContainer.joy);
 
@@ -142,6 +190,44 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    
+    String gameData;
+    gameData = DriverStation.getInstance().getGameSpecificMessage();
+    if(gameData.length() > 0)
+    {
+      switch (gameData.charAt(0))
+      {
+        case 'B' :
+          SmartDashboard.putBoolean("BlueTrue", true);
+          SmartDashboard.putBoolean("YellowTrue", false);
+          SmartDashboard.putBoolean("GreenTrue", false);
+          SmartDashboard.putBoolean("RedTrue", false);
+          break;
+        case 'G' :
+          SmartDashboard.putBoolean("BlueTrue", false);
+          SmartDashboard.putBoolean("YellowTrue", false);
+          SmartDashboard.putBoolean("GreenTrue", true);
+          SmartDashboard.putBoolean("RedTrue", false);
+          break;
+        case 'R' :
+          SmartDashboard.putBoolean("BlueTrue", false);
+          SmartDashboard.putBoolean("YellowTrue", false);
+          SmartDashboard.putBoolean("GreenTrue", false);
+          SmartDashboard.putBoolean("RedTrue", true);
+          break;
+        case 'Y' :
+          SmartDashboard.putBoolean("BlueTrue", false);
+          SmartDashboard.putBoolean("YellowTrue", true);
+          SmartDashboard.putBoolean("GreenTrue", false);
+          SmartDashboard.putBoolean("RedTrue", false);
+        default :
+      
+          break;
+      }
+    } else {
+      //Code for no data received yet
+    }
+
   }
 
   @Override
