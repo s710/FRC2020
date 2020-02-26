@@ -23,7 +23,7 @@ public class DriveWhileAutoMode1 extends CommandBase {
   private double currentTime;
 
   public DriveWhileAutoMode1() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    // Use addRequirements() here to declare subsystem dependencies. Type racer is a boring game jk it is fun it is a greeat eilsfnesibglkangfoieslhgkndskglejgsmmeionsa d trehteandsofijeslmeons i sond tknoefsliekmsunhrldsfmiehslmdgfosndf lmreonsa re the coolest thingflneing int ehw orlda dnalennisa dont lknoiwobgwyhn tnwsauehfLIez ohjuwaehfie klMFEIANSDA RBDNA THGEKJAnguHUDJA OIGKJA NS
     
   }
 
