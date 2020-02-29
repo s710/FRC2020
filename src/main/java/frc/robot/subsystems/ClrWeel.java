@@ -8,21 +8,22 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.VICTOR_CLASS;
+import frc.robot.Constants.SRX_Class;
 import edu.wpi.first.wpilibj.Joystick;
 
 import java.security.cert.CRL;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ClrWeel extends SubsystemBase {
 
-private static VictorSPX clrWheelMotor = new VictorSPX(VICTOR_CLASS.VICTOR_CLR_WHEEL_MOTOR_ID);
+private static VictorSPX clrWheelMotor = new VictorSPX(SRX_Class.SRX_CLR_WHEEL_MOTOR_ID);
 private boolean currentState;
 private double wheelMotorSpeed; 
-
 
   /**
    * Creates a new ColoWeel.

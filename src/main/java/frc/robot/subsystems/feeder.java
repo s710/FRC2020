@@ -14,15 +14,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.motorFeederintoShooter;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import static frc.robot.Constants.VICTOR_CLASS;
+import static frc.robot.Constants.SRX_Class;
 
 public class feeder extends SubsystemBase {
   /**
    * Creates a new feeder.
    */
 
-  private static VictorSPX feederBeltMotor = new VictorSPX(VICTOR_CLASS.VICTOR_BELT_MOTOR_ID);
-  private static VictorSPX motorFeederIntoShooterMotor = new VictorSPX(VICTOR_CLASS.VICTOR_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID);
+  private static VictorSPX feederBeltMotor = new VictorSPX(SRX_Class.SRX_BELT_MOTOR_ID);
+  private static VictorSPX motorFeederIntoShooterMotor = new VictorSPX(SRX_Class.SRX_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID);
 
   private boolean motorFeederintoShooterState;
   private boolean beltState;

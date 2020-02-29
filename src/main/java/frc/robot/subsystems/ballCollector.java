@@ -10,8 +10,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import frc.robot.Constants.VICTOR_CLASS;
+import frc.robot.Constants.SRX_Class;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
@@ -22,7 +25,7 @@ public class ballCollector extends SubsystemBase {
    * Creates a new ballCollector.
    */
 
-  private static VictorSPX collectorMotor = new VictorSPX(VICTOR_CLASS.VICTOR_BALL_COLLECTOR_MOTOR_ID);
+  private static TalonSRX collectorMotor = new TalonSRX(Constants.SRX_Class.SRX_BALL_COLLECTOR_MOTOR_ID);
 
   private boolean collectorState;
   public boolean isRetracted;
@@ -59,6 +62,7 @@ public class ballCollector extends SubsystemBase {
   }
 
   public void motorKillDeploy(){
+    collectorMotor.setNeutralMode(NeutralMode.Coast);
     collectorMotor.set(ControlMode.PercentOutput, 0);
     isRetracted = false;
   }
@@ -68,6 +72,7 @@ public class ballCollector extends SubsystemBase {
   }
 
   public void motorKillRetract(){
+    collectorMotor.setNeutralMode(NeutralMode.Brake);
     collectorMotor.set(ControlMode.PercentOutput, 0);
     isRetracted = true;
   }
