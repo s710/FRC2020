@@ -15,9 +15,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.launcher;
 import frc.robot.commands.motorFeederintoShooter;
+import frc.robot.commands.pushPullCollector;
 import frc.robot.commands.ClrWeelSpinner;
 import frc.robot.commands.CommandGroupAutonomousTest;
 import frc.robot.commands.belt;
+import frc.robot.commands.runBallCollector;
+import frc.robot.commands.winchCmd;
 
 
 /**
@@ -69,6 +72,10 @@ public class RobotContainer {
     y.whenPressed(new belt());
     a.whenPressed(new motorFeederintoShooter());
     rt.whenHeld(new ClrWeelSpinner());
+    lt.whenHeld(new winchCmd());
+    lb.whenPressed(new runBallCollector());
+    rb.whenPressed(new pushPullCollector());
+
 
   }
 

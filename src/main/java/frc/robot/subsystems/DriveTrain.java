@@ -37,30 +37,22 @@ public class DriveTrain extends SubsystemBase {
   private static DifferentialDrive differentialDriveTrain = new DifferentialDrive(leftMotors, rightMotors);
 
  public DriveTrain() {
- 
 
   //midLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
   //backLeftMotor.follow(frontLeftMotor, FollowerType.PercentOutput);
   
   //midRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
   //backRightMotor.follow(frontRightMotor, FollowerType.PercentOutput);
-  
-
-
-
 
 }
 
 
 public void autoMode1MotorSet(double speedMode1){
-
   rightMotors.set(speedMode1);
   leftMotors.set(-speedMode1);
-
 }
 
 public void turnToAngle(double turningSpeed){
-
   rightMotors.set(turningSpeed);
   leftMotors.set(turningSpeed);
 }
@@ -73,18 +65,16 @@ public void motorTelemetryLog(){
   System.out.println("SensorPositionRightMotors:  " + frontRightMotor.getSelectedSensorPosition(0));
   System.out.println("_________________________________________________");
 
-
-
+  SmartDashboard.putNumber("SensorVelocityLeftMotor", frontLeftMotor.getSelectedSensorVelocity(0));
+  SmartDashboard.putNumber("SensorPositionLeftMotors", frontLeftMotor.getSelectedSensorPosition(0));
+  SmartDashboard.putNumber("SensorVelocityRightMotors", frontRightMotor.getSelectedSensorVelocity(0));
+  SmartDashboard.putNumber("SensorPositionRightMotors", frontRightMotor.getSelectedSensorPosition(0));
 }
-
-
 
 
   public void driveTank(Joystick joy){
     System.out.println(joy.getY() + " " + joy.getThrottle());
     differentialDriveTrain.tankDrive(-joy.getY(), -joy.getThrottle());
-    
-
   }
 
 

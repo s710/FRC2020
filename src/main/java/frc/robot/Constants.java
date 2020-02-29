@@ -28,12 +28,15 @@ public final class Constants {
 		
 		public static final int FX_SHOOTER_LEFT_MOTOR_ID = 11;
 		public static final int FX_SHOOTER_RIGHT_MOTOR_ID = 10;
+
+		public static final int FX_WINCH_MOTOR_ID = 7;
 	}
 	public static class VICTOR_CLASS {
 
-		public static final int VICTOR_BELT_MOTOR_ID = 1;
-		public static final int VICTOR_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID = 2;
-		public static final int VICTOR_CLR_WHEEL_MOTOR_ID = 3;
+		public static final int VICTOR_BELT_MOTOR_ID = 12;
+		public static final int VICTOR_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID = 13;
+		public static final int VICTOR_CLR_WHEEL_MOTOR_ID = 14;
+		public static final int VICTOR_BALL_COLLECTOR_MOTOR_ID = 15;
 		
 	}
 // CAN id's for talon_FXs stored here

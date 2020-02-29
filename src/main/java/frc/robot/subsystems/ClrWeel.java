@@ -31,7 +31,7 @@ private double wheelMotorSpeed;
      wheelMotorSpeed = SmartDashboard.getNumber("Color Wheel Motor Speed", 0.3);
      
   }
-
+//IF THIS BREAKS, FIX IS PROBABLY TO MOVE THE SMARTDASHBOARD CALL INTO THE SETMOTOR SPEED THING BELOW -Predicted by Sherwin Fernandes 2/26/2020 @4:28PM
   public void triggerWhenHeldSpin() {
 
     clrWheelMotor.set(ControlMode.PercentOutput, wheelMotorSpeed);

@@ -10,14 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-
-public class runBallCollector extends CommandBase {
+public class winchCmd extends CommandBase {
   /**
-   * Creates a new runBallCollector.
+   * Creates a new winchCmd.
    */
-
-
-  public runBallCollector() {
+  public winchCmd() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -29,8 +26,7 @@ public class runBallCollector extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.m_ballCollector.collectorToggle();
-
+    Robot.m_winch.toggleWinch();
   }
 
   // Called once the command ends or is interrupted.

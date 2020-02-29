@@ -19,14 +19,19 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.ballCollector;
 import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
+import frc.robot.subsystems.winch;
 import frc.utilities.Navigation;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ClrWeel;
 import frc.robot.commands.CommandGroupAutonomousTest;
 import frc.robot.commands.DriveWhileAutoMode1;
+import frc.robot.commands.runBallCollector;
+import frc.robot.commands.winchCmd;
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.Timer;
 
 
 
@@ -47,6 +52,11 @@ public class Robot extends TimedRobot {
   public static feeder m_feeder;
   public static ClrWeel m_ClrWeel;
   public static DriveWhileAutoMode1 m_driveWhileAutoMode1;
+  public static ballCollector m_ballCollector;
+  public static winch m_winch;
+
+  public double startGlobalTime;
+  public double updatingGlobalTime;
 
 
   private NetworkTableInstance inst;
@@ -74,8 +84,11 @@ public class Robot extends TimedRobot {
     m_ClrWeel = new ClrWeel();
     m_commandGroupAutonomousTest = new CommandGroupAutonomousTest();
     m_driveWhileAutoMode1 = new DriveWhileAutoMode1();
+    m_ballCollector = new ballCollector();
+    m_winch = new winch();
 
- 
+
+    startGlobalTime = Timer.getFPGATimestamp();
 
     SmartDashboard.putNumber("AutoMode1SecondsTime", 1);
     SmartDashboard.putNumber("AutoMode1Speed", 0.8);
@@ -85,6 +98,15 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("YellowTrue", false);
     SmartDashboard.putBoolean("BlueTrue", false);
     SmartDashboard.putBoolean("RedTrue", false);  
+    SmartDashboard.putNumber("BallCollectorSpeed", 0.15);
+    SmartDashboard.putNumber("CollectorDeployTime", 1);
+    SmartDashboard.putNumber("CollectorRetractTime", 1);
+    SmartDashboard.putBoolean("isCollectorExtended", false);
+    SmartDashboard.putNumber("DeploySpeed", 0.15);
+    SmartDashboard.putNumber("RetractSpeed", -0.15);
+    SmartDashboard.putNumber("Winch Speed", 0.8);
+
+
 
 
     chooser = new SendableChooser<Command>();
@@ -131,6 +153,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Gyro Angle" , m_navigation.getAngle());
 
     //SmartDashboard.putNumber("Gyro Angle" , m_navigation.getAngle());
+
+    updatingGlobalTime = Timer.getFPGATimestamp();
     
     CommandScheduler.getInstance().run();
     m_driveTrain.driveTank(m_robotContainer.joy);
