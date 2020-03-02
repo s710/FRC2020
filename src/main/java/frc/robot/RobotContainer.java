@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.inverseLauncher;
+// import frc.robot.commands.inverseLauncher;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.launcher;
@@ -68,7 +68,7 @@ public class RobotContainer {
     //JoystickButton r_dpad = new JoystickButton(joy, 11); 
   
     b.whenPressed(new launcher());
-    x.whenPressed(new inverseLauncher());
+    // x.whenPressed(new inverseLauncher());
     y.whenPressed(new belt());
     a.whenPressed(new motorFeederintoShooter());
     rt.whenHeld(new ClrWeelSpinner());
