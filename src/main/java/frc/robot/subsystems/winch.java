@@ -25,7 +25,7 @@ public class winch extends SubsystemBase {
     winchState = false;
   }
 
-  public static void toggleWinch() {
+  public void toggleWinch() {
     if (winchState) {
       winchMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Winch Speed", 0.8));
       winchState = false;
