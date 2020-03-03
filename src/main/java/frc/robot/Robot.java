@@ -105,9 +105,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("DeploySpeed", 0.15);
     SmartDashboard.putNumber("RetractSpeed", -0.15);
     SmartDashboard.putNumber("Winch Speed", 0.8);
-
-
-
+  
+  
 
     chooser = new SendableChooser<Command>();
 
