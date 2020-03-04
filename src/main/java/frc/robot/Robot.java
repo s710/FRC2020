@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.TestSystemForStuff;
 import frc.robot.subsystems.ballCollector;
 import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
@@ -54,6 +55,7 @@ public class Robot extends TimedRobot {
   public static DriveWhileAutoMode1 m_driveWhileAutoMode1;
   public static ballCollector m_ballCollector;
   public static winch m_winch;
+  public static TestSystemForStuff m_testSystemForStuff;
 
   public double startGlobalTime;
   public double updatingGlobalTime;
@@ -86,6 +88,7 @@ public class Robot extends TimedRobot {
     m_driveWhileAutoMode1 = new DriveWhileAutoMode1();
     m_ballCollector = new ballCollector();
     m_winch = new winch();
+    m_testSystemForStuff = new TestSystemForStuff();
 
 
     startGlobalTime = Timer.getFPGATimestamp();
@@ -105,7 +108,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("DeploySpeed", 0.15);
     SmartDashboard.putNumber("RetractSpeed", -0.15);
     SmartDashboard.putNumber("Winch Speed", 0.8);
-  
+    SmartDashboard.putBoolean("HasThisTestForEnzoBeenReached?", false);
+    
   
 
     chooser = new SendableChooser<Command>();
@@ -144,6 +148,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    SmartDashboard.putNumber("JoyStickLeftValue (Throttle)", m_robotContainer.joy.getThrottle());
+    SmartDashboard.putNumber("JoyStickRightValue (Y-axis)", m_robotContainer.joy.getY());
+
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic

@@ -57,6 +57,13 @@ public void turnToAngle(double turningSpeed){
   leftMotors.set(turningSpeed);
 }
 
+public void testFunction(){
+  System.out.println("test worked");
+}
+
+
+
+
 public void motorTelemetryLog(){
   System.out.println("___________________DRIVE TRAIN___________________");
   System.out.println("SensorVelocityLeftMotors:  " + frontLeftMotor.getSelectedSensorVelocity(0));
@@ -73,7 +80,8 @@ public void motorTelemetryLog(){
 
 
   public void driveTank(Joystick joy){
-    System.out.println(joy.getY() + " " + joy.getThrottle());
+    // This is the thing that is printing out all of the stuff
+    //System.out.println(joy.getY() + " " + joy.getThrottle());
     differentialDriveTrain.tankDrive(-joy.getY(), -joy.getThrottle());
   }
 

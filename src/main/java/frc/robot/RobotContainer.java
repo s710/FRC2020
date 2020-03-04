@@ -18,6 +18,7 @@ import frc.robot.commands.motorFeederintoShooter;
 import frc.robot.commands.pushPullCollector;
 import frc.robot.commands.ClrWeelSpinner;
 import frc.robot.commands.CommandGroupAutonomousTest;
+import frc.robot.commands.TestCommandForStuff;
 import frc.robot.commands.belt;
 import frc.robot.commands.runBallCollector;
 import frc.robot.commands.winchCmd;
@@ -75,6 +76,7 @@ public class RobotContainer {
     lt.whenHeld(new winchCmd());
     lb.whenPressed(new runBallCollector());
     rb.whenPressed(new pushPullCollector());
+    x.whenPressed(new TestCommandForStuff());
     
 
   }
