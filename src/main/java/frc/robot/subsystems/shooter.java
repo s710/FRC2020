@@ -38,10 +38,9 @@ public class shooter extends SubsystemBase {
 
     // shooterLeftMotor.setInverted(true);
     //   shooterRightMotor.setInverted(false);
-    shooterLeftMotor.setInverted(false);
-    shooterRightMotor.setInverted(true);
+    shooterLeftMotor.setInverted(true);
+    shooterRightMotor.setInverted(false);
 
-    SmartDashboard.putNumber("Launcher_Motor_Speed", 1.0);
 
 
 

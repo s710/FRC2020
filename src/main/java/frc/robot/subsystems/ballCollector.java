@@ -43,7 +43,7 @@ public class ballCollector extends SubsystemBase {
 
     motorCollectorNotDeployRetractState = false;
     isRetracted = true;
-
+    motorCollectorNotDeployRetract.setInverted(true);
 
 
   }
@@ -64,6 +64,7 @@ public class ballCollector extends SubsystemBase {
 
   public void motorKillDeploy(){
     collectorMotor.setNeutralMode(NeutralMode.Coast);
+
     motorCollectorNotDeployRetract.set(ControlMode.PercentOutput, SmartDashboard.getNumber("BallCollectorSpeedNotDeployRetract", 0.5));
     collectorMotor.set(ControlMode.PercentOutput, 0);
     isRetracted = false;
@@ -76,6 +77,7 @@ public class ballCollector extends SubsystemBase {
   public void motorKillRetract(){
     collectorMotor.setNeutralMode(NeutralMode.Brake);
     collectorMotor.set(ControlMode.PercentOutput, 0);
+    motorCollectorNotDeployRetract.set(ControlMode.PercentOutput, 0);
     isRetracted = true;
   }
 

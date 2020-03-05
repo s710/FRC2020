@@ -109,13 +109,15 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("CollectorDeployTime", 1);
     SmartDashboard.putNumber("CollectorRetractTime", 1);
     SmartDashboard.putBoolean("isCollectorExtended", false);
-    SmartDashboard.putNumber("DeploySpeed", 0.15);
-    SmartDashboard.putNumber("RetractSpeed", -0.15);
+    SmartDashboard.putNumber("DeploySpeed", 0.25);
+    SmartDashboard.putNumber("RetractSpeed", -0.5);
     SmartDashboard.putNumber("Winch Speed", 0.8);
     SmartDashboard.putBoolean("HasThisTestForEnzoBeenReached?", false);
     SmartDashboard.putNumber("HookerSpeed", 0.1);
     SmartDashboard.putNumber("HookerToBarTime", 0.5);
     SmartDashboard.putNumber("HookerFromBarTime", 0.5);
+    SmartDashboard.putNumber("Launcher_Motor_Speed", 1.0);
+
     
   
 

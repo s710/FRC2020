@@ -27,6 +27,9 @@ public class WinchHooker extends SubsystemBase {
 
   }
 
+  public void killHooker(){
+    winchHookerMotor.set(ControlMode.PercentOutput, 0);
+  }
 
   public void turnHookerToBar(){
     winchHookerMotor.set(ControlMode.PercentOutput, hookerSpeed);

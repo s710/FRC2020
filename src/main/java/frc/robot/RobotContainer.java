@@ -16,11 +16,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.launcher;
 import frc.robot.commands.motorFeederintoShooter;
 import frc.robot.commands.pushPullCollector;
+import frc.robot.commands.retractHooker;
 import frc.robot.commands.ClrWeelSpinner;
 import frc.robot.commands.CommandGroupAutonomousTest;
+import frc.robot.commands.RealHookerDeployCmd;
 import frc.robot.commands.TestCommandForStuff;
 import frc.robot.commands.belt;
-import frc.robot.commands.deployAndRetractHooker;
 import frc.robot.commands.killClrWheelSpinner;
 import frc.robot.commands.runBallCollector;
 import frc.robot.commands.winchCmd;
@@ -76,8 +77,8 @@ public class RobotContainer {
     y.whenPressed(new belt());
     a.whenPressed(new motorFeederintoShooter());
     
-    rt.whenHeld(new ClrWeelSpinner());
-    rt.whenReleased(new killClrWheelSpinner());
+    // rt.whenHeld(new ClrWeelSpinner());
+    // rt.whenReleased(new killClrWheelSpinner());
     
     // lt.whenHeld(new winchCmd());
     // lt.whenReleased(new winchKill());
@@ -85,8 +86,9 @@ public class RobotContainer {
     lt.whileHeld(new winchCmd());
 
     // lb.whenPressed(new runBallCollector());
-    rb.whenPressed(new pushPullCollector());
-    x.whenPressed(new deployAndRetractHooker());
+    lb.whenPressed(new pushPullCollector());
+    rt.whileHeld(new RealHookerDeployCmd());
+    rb.whileHeld(new retractHooker());
     System.out.println("reached button assignment in robot container");
 
   }

@@ -26,13 +26,13 @@ public class feeder extends SubsystemBase {
   private boolean motorFeederintoShooterState;
   private boolean beltState;
 
-  public double getMotorFeederIntoShooterSpeed() {
-    return SmartDashboard.getNumber("Motor_Feeder_Into_Shooter_Speed_Value", 0.25);
- }
+//   public double getMotorFeederIntoShooterSpeed() {
+//     return SmartDashboard.getNumber("Motor_Feeder_Into_Shooter_Speed_Value", 0.25);
+//  }
 
- public double getBeltSpeed() {
-  return SmartDashboard.getNumber("Belt_Speed_Value", 0.25);
-}
+//  public double getBeltSpeed() {
+//   return SmartDashboard.getNumber("Belt_Speed_Value", 0.25);
+// }
   
   public feeder() {
     
@@ -45,11 +45,12 @@ public class feeder extends SubsystemBase {
   public void beltToggle(){
     if(beltState){
       beltState = false;
-      feederBeltMotor.set(ControlMode.PercentOutput, getBeltSpeed());
+      feederBeltMotor.set(ControlMode.PercentOutput, 0);
       System.out.println("is correctly getting speed for belt");
 
     }
     else{
+      feederBeltMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Belt_Speed_Value", 0.25));
       beltState = true;
       System.out.println("is correctly toggling off for belt");
 
@@ -60,10 +61,11 @@ public class feeder extends SubsystemBase {
     if(motorFeederintoShooterState){
       motorFeederintoShooterState = false;
       System.out.println("got to the speed for motorFeederIntoShooterToggle");
-      motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, getMotorFeederIntoShooterSpeed());
+      motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, 0);
     }
     else{
     motorFeederintoShooterState = true;
+    motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Motor_Feeder_Into_Shooter_Speed_Value", 0.25));
     System.out.println("is correctly toggling off for motorFeederIntoShooterToggle");
     }
   }
