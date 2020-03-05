@@ -32,14 +32,14 @@ public final class Constants {
 		
 	}
 	public static class SRX_Class {
-		
-		public static final int SRX_WINCH_MOTOR_ID = 7;
-		public static final int SRX_COLLECTOR_NOT_DEPLPOY_RETRACT_ID = 16;
-		public static final int SRX_WINCH_HOOKER_ID = 17;
-		public static final int SRX_BELT_MOTOR_ID = 12;
-		public static final int SRX_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID = 13;
-		public static final int SRX_CLR_WHEEL_MOTOR_ID = 14;
-		public static final int SRX_BALL_COLLECTOR_MOTOR_ID = 15;
+
+		public static final int SRX_WINCH_MOTOR_ID = 20;
+		public static final int SRX_COLLECTOR_NOT_DEPLPOY_RETRACT_ID = 21;
+		public static final int SRX_WINCH_HOOKER_ID = 25;
+		public static final int SRX_BELT_MOTOR_ID = 23;
+		public static final int SRX_MOTOR_FEEDER_INTO_SHOOTER_MOTOR_ID = 24;
+		public static final int SRX_CLR_WHEEL_MOTOR_ID = 26;
+		public static final int SRX_BALL_COLLECTOR_MOTOR_ID = 22;
 
 
 	}
