@@ -59,14 +59,16 @@ public class feeder extends SubsystemBase {
 
   public void motorFeederintoShooterToggle(){
     if(motorFeederintoShooterState){
-      motorFeederintoShooterState = false;
+    
       System.out.println("got to the speed for motorFeederIntoShooterToggle");
       motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, 0);
+      motorFeederintoShooterState = false;
     }
     else{
-    motorFeederintoShooterState = true;
+   
     motorFeederIntoShooterMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Motor_Feeder_Into_Shooter_Speed_Value", 0.25));
     System.out.println("is correctly toggling off for motorFeederIntoShooterToggle");
+    motorFeederintoShooterState = true;
     }
   }
 

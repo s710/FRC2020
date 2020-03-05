@@ -30,7 +30,6 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.ClrWeel;
 import frc.robot.commands.CommandGroupAutonomousTest;
 import frc.robot.commands.DriveWhileAutoMode1;
-import frc.robot.commands.runBallCollector;
 import frc.robot.commands.winchCmd;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.Timer;
@@ -106,7 +105,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("BlueTrue", false);
     SmartDashboard.putBoolean("RedTrue", false);  
     SmartDashboard.putNumber("BallCollectorSpeedNotDeployRetract", 0.5);
-    SmartDashboard.putNumber("CollectorDeployTime", 1);
+    SmartDashboard.putNumber("CollectorDeployTime", 0.5);
     SmartDashboard.putNumber("CollectorRetractTime", 1);
     SmartDashboard.putBoolean("isCollectorExtended", false);
     SmartDashboard.putNumber("DeploySpeed", 0.25);
