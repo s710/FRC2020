@@ -14,17 +14,10 @@ public class CommandGroupAutonomousTest extends SequentialCommandGroup {
   /**
    * Creates a new CommandGroupAutonomousTest.
    */
-
+  private boolean finished;
   public CommandGroupAutonomousTest() {
     // Use addRequirements() here to declare subsystem dependencies.
-    new DriveWhileAutoMode1();
-    new GyroTurnAutoTest(90);
-    new DriveWhileAutoMode1();
-    new GyroTurnAutoTest(90);
-    new DriveWhileAutoMode1();
-    new GyroTurnAutoTest(90);
-    new DriveWhileAutoMode1();
-    new GyroTurnAutoTest(90);
+    
   
   }
 
@@ -33,12 +26,22 @@ public class CommandGroupAutonomousTest extends SequentialCommandGroup {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    finished = false;
   }
 
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    new DriveWhileAutoMode1();
+    new GyroTurnAutoTest(90);
+    new DriveWhileAutoMode1();
+    new GyroTurnAutoTest(90);
+    new DriveWhileAutoMode1();
+    new GyroTurnAutoTest(90);
+    new DriveWhileAutoMode1();
+    new GyroTurnAutoTest(90);
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +52,6 @@ public class CommandGroupAutonomousTest extends SequentialCommandGroup {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

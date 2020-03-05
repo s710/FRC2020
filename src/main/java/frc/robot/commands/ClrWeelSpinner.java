@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import frc.robot.subsystems.ClrWeel;
 
 public class ClrWeelSpinner extends CommandBase {
   /**
@@ -31,6 +30,7 @@ public class ClrWeelSpinner extends CommandBase {
   @Override
   public void execute() {
     Robot.m_ClrWeel.triggerWhenHeldSpin();
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.

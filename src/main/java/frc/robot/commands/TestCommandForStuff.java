@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-
 public class TestCommandForStuff extends CommandBase {
   /**
    * Creates a new TestCommandForStuff.
@@ -24,12 +23,14 @@ public class TestCommandForStuff extends CommandBase {
   @Override
   public void initialize() {
     finished = false;
+    System.out.println("reached initialization in test command");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Robot.m_testSystemForStuff.functionForPrintingTestDataToDashboard();
+    System.out.println("print worked, not direct subsystem call");
     finished = true;
   }
 

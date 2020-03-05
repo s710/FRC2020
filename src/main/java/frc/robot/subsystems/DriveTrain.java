@@ -83,6 +83,9 @@ public void motorTelemetryLog(){
     // This is the thing that is printing out all of the stuff
     //System.out.println(joy.getY() + " " + joy.getThrottle());
     differentialDriveTrain.tankDrive(-joy.getY(), -joy.getThrottle());
+    if(joy.getThrottle() == 1){
+      System.out.println("It is There!");
+    }
   }
 
 

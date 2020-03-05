@@ -10,12 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class winchCmd extends CommandBase {
+public class winchKill extends CommandBase {
   /**
-   * Creates a new winchCmd.
+   * Creates a new winchKill.
    */
   private boolean finished;
-  public winchCmd() {
+  public winchKill() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -28,16 +28,13 @@ public class winchCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.m_winch.turnOnWinch();
+    Robot.m_winch.killWinch();
     finished = true;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    finished = true;
-    System.out.println("while held when released interrupts function");
-
   }
 
   // Returns true when the command should end.

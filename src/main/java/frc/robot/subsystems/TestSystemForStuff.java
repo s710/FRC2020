@@ -20,6 +20,7 @@ public class TestSystemForStuff extends SubsystemBase {
 
   public void functionForPrintingTestDataToDashboard(){
     SmartDashboard.putBoolean("HasThisTestForEnzoBeenReached?", true);
+    System.out.println("Test worked in console :)");
   }
 
   @Override

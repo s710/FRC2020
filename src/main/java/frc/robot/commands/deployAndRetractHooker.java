@@ -7,68 +7,62 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
-import frc.utilities.Navigation;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.CommandGroupBase;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 
-public class GyroTurnAutoTest extends CommandBase {
-  /*
-   * Creates a new GyroTurnAutoTest.
+public class deployAndRetractHooker extends CommandBase {
+  /**
+   * Creates a new deployAndRetractHooker.
    */
+  private double startTime;
+  private boolean finished;
+  private double HookerFromBarTime;
+  private double HookerToBarTime;
+  private double currentTime;
 
-   private double gyroAngleInitial;
-   private double gyroCurrentAngle;
-   private double turnAngleSpeed;
-   private double angleToTurn;
-   private boolean finished;
-
-  public GyroTurnAutoTest(double angleAmountTurned) {
+  public deployAndRetractHooker() {
     // Use addRequirements() here to declare subsystem dependencies.
-
-    angleToTurn = angleAmountTurned;
   }
-
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    startTime = Timer.getFPGATimestamp();
+    HookerToBarTime = SmartDashboard.getNumber("HookerToBarTime", 0.5);
+    HookerFromBarTime = SmartDashboard.getNumber("HookerFromBarTime", 0.5);
     finished = false;
-    try{
-      gyroAngleInitial = Robot.m_navigation.getAngle();
-    }
-
-    catch(Exception exception){
-      System.out.println("gyro initialization error" + exception);
-    }
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    try{
-      turnAngleSpeed = SmartDashboard.getNumber("TurnToAngleSpeed", 0.8);
+    currentTime = Timer.getFPGATimestamp();
 
-      gyroCurrentAngle = Robot.m_navigation.getAngle();
-    
-      if((gyroCurrentAngle - gyroAngleInitial) >= angleToTurn){
-        Robot.m_driveTrain.turnToAngle(0);
+    if(Robot.m_winchHooker.hookerBarState){
+      if(currentTime - startTime <= HookerFromBarTime){
+        Robot.m_winchHooker.turnHookerFromBar();
+      }
+      else{
+        Robot.m_winchHooker.hookerFromBarComplete();
         finished = true;
       }
-
-      else{
-        Robot.m_driveTrain.turnToAngle(turnAngleSpeed); }
-    
-      }
-    catch (Exception exception){
-      System.out.println("gyro turn mechanism error" + exception);
-      finished = true;
-       
     }
-  
+    else if(!Robot.m_winchHooker.hookerBarState){
+      if(currentTime - startTime <= HookerToBarTime){
+        Robot.m_winchHooker.turnHookerToBar();
+      }
+      else{
+        Robot.m_winchHooker.hookerToBarComplete();
+        finished = true;
+      }
+    }
+
+
+    
   }
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

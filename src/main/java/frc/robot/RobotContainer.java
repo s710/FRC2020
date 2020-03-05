@@ -20,8 +20,11 @@ import frc.robot.commands.ClrWeelSpinner;
 import frc.robot.commands.CommandGroupAutonomousTest;
 import frc.robot.commands.TestCommandForStuff;
 import frc.robot.commands.belt;
+import frc.robot.commands.deployAndRetractHooker;
+import frc.robot.commands.killClrWheelSpinner;
 import frc.robot.commands.runBallCollector;
 import frc.robot.commands.winchCmd;
+import frc.robot.commands.winchKill;
 
 
 /**
@@ -72,12 +75,19 @@ public class RobotContainer {
     // x.whenPressed(new inverseLauncher());
     y.whenPressed(new belt());
     a.whenPressed(new motorFeederintoShooter());
-    rt.whenHeld(new ClrWeelSpinner());
-    lt.whenHeld(new winchCmd());
-    lb.whenPressed(new runBallCollector());
-    rb.whenPressed(new pushPullCollector());
-    x.whenPressed(new TestCommandForStuff());
     
+    rt.whenHeld(new ClrWeelSpinner());
+    rt.whenReleased(new killClrWheelSpinner());
+    
+    // lt.whenHeld(new winchCmd());
+    // lt.whenReleased(new winchKill());
+    
+    lt.whileHeld(new winchCmd());
+
+    // lb.whenPressed(new runBallCollector());
+    rb.whenPressed(new pushPullCollector());
+    x.whenPressed(new deployAndRetractHooker());
+    System.out.println("reached button assignment in robot container");
 
   }
 

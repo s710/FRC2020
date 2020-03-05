@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.TestSystemForStuff;
+import frc.robot.subsystems.WinchHooker;
 import frc.robot.subsystems.ballCollector;
 import frc.robot.subsystems.feeder;
 import frc.robot.subsystems.shooter;
@@ -33,6 +34,7 @@ import frc.robot.commands.runBallCollector;
 import frc.robot.commands.winchCmd;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.Timer;
+import frc.robot.subsystems.WinchHooker;
 
 
 
@@ -56,6 +58,7 @@ public class Robot extends TimedRobot {
   public static ballCollector m_ballCollector;
   public static winch m_winch;
   public static TestSystemForStuff m_testSystemForStuff;
+  public static WinchHooker m_winchHooker;
 
   public double startGlobalTime;
   public double updatingGlobalTime;
@@ -89,6 +92,7 @@ public class Robot extends TimedRobot {
     m_ballCollector = new ballCollector();
     m_winch = new winch();
     m_testSystemForStuff = new TestSystemForStuff();
+    m_winchHooker = new WinchHooker();
 
 
     startGlobalTime = Timer.getFPGATimestamp();
@@ -101,7 +105,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("YellowTrue", false);
     SmartDashboard.putBoolean("BlueTrue", false);
     SmartDashboard.putBoolean("RedTrue", false);  
-    SmartDashboard.putNumber("BallCollectorSpeed", 0.15);
+    SmartDashboard.putNumber("BallCollectorSpeedNotDeployRetract", 0.5);
     SmartDashboard.putNumber("CollectorDeployTime", 1);
     SmartDashboard.putNumber("CollectorRetractTime", 1);
     SmartDashboard.putBoolean("isCollectorExtended", false);
@@ -109,6 +113,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("RetractSpeed", -0.15);
     SmartDashboard.putNumber("Winch Speed", 0.8);
     SmartDashboard.putBoolean("HasThisTestForEnzoBeenReached?", false);
+    SmartDashboard.putNumber("HookerSpeed", 0.1);
+    SmartDashboard.putNumber("HookerToBarTime", 0.5);
+    SmartDashboard.putNumber("HookerFromBarTime", 0.5);
     
   
 

@@ -21,6 +21,7 @@ public class DriveWhileAutoMode1 extends CommandBase {
    */
   private double startTime;
   private double currentTime;
+  private boolean finished;
 
   public DriveWhileAutoMode1() {
     // Use addRequirements() here to declare subsystem dependencies. Type racer is a boring game jk it is fun it is a greeat eilsfnesibglkangfoieslhgkndskglejgsmmeionsa d trehteandsofijeslmeons i sond tknoefsliekmsunhrldsfmiehslmdgfosndf lmreonsa re the coolest thingflneing int ehw orlda dnalennisa dont lknoiwobgwyhn tnwsauehfLIez ohjuwaehfie klMFEIANSDA RBDNA THGEKJAnguHUDJA OIGKJA NS
@@ -32,6 +33,7 @@ public class DriveWhileAutoMode1 extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    finished = false;
     startTime = Timer.getFPGATimestamp();
 
   }
@@ -43,6 +45,7 @@ public class DriveWhileAutoMode1 extends CommandBase {
 
     if ((currentTime - startTime) >= SmartDashboard.getNumber("AutoMode1SecondsTime", 1)){
       Robot.m_driveTrain.autoMode1MotorSet(0);
+      finished = true;
     }
     else{
       Robot.m_driveTrain.autoMode1MotorSet(SmartDashboard.getNumber("AutoMode1Speed", 0.8));
@@ -72,6 +75,6 @@ public class DriveWhileAutoMode1 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

@@ -26,8 +26,9 @@ public class ballCollector extends SubsystemBase {
    */
 
   private static TalonSRX collectorMotor = new TalonSRX(Constants.SRX_Class.SRX_BALL_COLLECTOR_MOTOR_ID);
+  private static TalonSRX motorCollectorNotDeployRetract = new TalonSRX(Constants.SRX_Class.SRX_COLLECTOR_NOT_DEPLPOY_RETRACT_ID);
 
-  private boolean collectorState;
+  private boolean motorCollectorNotDeployRetractState;
   public boolean isRetracted;
   // private double timerThreshold;
   // private double whileLoopTime;
@@ -40,29 +41,30 @@ public class ballCollector extends SubsystemBase {
 
   public ballCollector() {
 
-    collectorState = false;
+    motorCollectorNotDeployRetractState = false;
     isRetracted = true;
 
 
 
   }
 
-  public void collectorToggle(){
+  // public void collectorToggle(){
     
-    if(collectorState){
-      collectorMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("BallCollectorSpeed", 0.15));
-      collectorState = false;
+  //   if(motorCollectorNotDeployRetractState){
+  //     motorCollectorNotDeployRetract.set(ControlMode.PercentOutput, SmartDashboard.getNumber("BallCollectorSpeedNotDeployRetract", 0.15));
+  //     motorCollectorNotDeployRetractState = false;
 
-    }
-    else
-    {
-      collectorMotor.set(ControlMode.PercentOutput, 0);
-      collectorState = true;
-    }
-  }
+  //   }
+  //   else
+  //   {
+  //     motorCollectorNotDeployRetract.set(ControlMode.PercentOutput, 0);
+  //     motorCollectorNotDeployRetractState = true;
+  //   }
+  // }
 
   public void motorKillDeploy(){
     collectorMotor.setNeutralMode(NeutralMode.Coast);
+    motorCollectorNotDeployRetract.set(ControlMode.PercentOutput, SmartDashboard.getNumber("BallCollectorSpeedNotDeployRetract", 0.5));
     collectorMotor.set(ControlMode.PercentOutput, 0);
     isRetracted = false;
   }

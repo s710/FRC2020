@@ -16,7 +16,7 @@ public class runBallCollector extends CommandBase {
    * Creates a new runBallCollector.
    */
 
-
+  private boolean finished;
   public runBallCollector() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -24,12 +24,14 @@ public class runBallCollector extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    finished = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.m_ballCollector.collectorToggle();
+    // Robot.m_ballCollector.collectorToggle();
+    finished = true;
 
   }
 
@@ -41,6 +43,6 @@ public class runBallCollector extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

@@ -8,33 +8,45 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.FX_Class;
-import frc.robot.Constants.SRX_Class;
+import frc.robot.Constants;
 
-public class winch extends SubsystemBase {
+public class WinchHooker extends SubsystemBase {
   /**
-   * Creates a new winch.
-  /** */
-  private static TalonSRX winchMotor = new TalonSRX(SRX_Class.SRX_WINCH_MOTOR_ID); // "might be talonsrx" by paul
+   * Creates a new WinchHooker.
+   */
+  public boolean hookerBarState;
+  public double hookerSpeed = SmartDashboard.getNumber("HookerSpeed", 0.1);
 
-  public winch() {
-   
-  }
-
-  public void turnOnWinch() {
-    winchMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Winch Speed", 0.8));
+  private static TalonSRX winchHookerMotor = new TalonSRX(Constants.SRX_Class.SRX_WINCH_HOOKER_ID);
+  public WinchHooker() {
+    hookerBarState = false;
 
   }
-  public void killWinch(){
-    winchMotor.set(ControlMode.PercentOutput, 0);
+
+
+  public void turnHookerToBar(){
+    winchHookerMotor.set(ControlMode.PercentOutput, hookerSpeed);
   }
-      
   
+  public void turnHookerFromBar(){
+    winchHookerMotor.set(ControlMode.PercentOutput, -hookerSpeed);
+  
+  }
+  public void hookerFromBarComplete(){
+    winchHookerMotor.set(ControlMode.PercentOutput, 0);
+    hookerBarState = false;
+  }
+  public void hookerToBarComplete(){
+    winchHookerMotor.set(ControlMode.PercentOutput, 0);
+    hookerBarState = true;
+  }
+
+
+
 
   @Override
   public void periodic() {

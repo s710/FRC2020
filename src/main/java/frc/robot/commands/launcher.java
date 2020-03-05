@@ -29,7 +29,7 @@ public class launcher extends CommandBase {
   @Override
   public void execute() {
     Robot.m_shooter.toggle();
-    Robot.m_driveTrain.testFunction();
+    System.out.println("reached launcher toggle");
     finished = true;
 
   
